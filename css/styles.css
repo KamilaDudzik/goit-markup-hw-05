@@ -3,16 +3,21 @@
   --light-gray: #757575;
   --deep-black: #000000;
   --background-dark: #2f303a;
+  --background-gray-transparent: #2f303acc;
   --background-dark-transparent: #2f303a66;
   --secondary-color: #ffffff;
   --secondary-color-transparent: #ffffff99;
   --accent-color: #2196f3;
+  --accent-color-transparent: #2196f3e5;
   --very-light-gray-background: #f5f4fa;
   --line-color: #ececec;
   --inactive-icon-color: #afb1b8;
   --inactive-footer-button-color: #ffffff1a;
   --card-border-color: #eeeeee;
+  --exit-button-broder: #0000001a;
+  --backdrop-color: #00000033;
   --main-font: 'Roboto', sans-serif;
+  --transition-kit: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 * {
   margin: 0;
@@ -120,6 +125,7 @@ button {
   color: var(--main-text-color);
   text-decoration: none;
   display: flex;
+  transition: color var(--transition-kit);
 }
 .contact-links {
   color: var(--light-gray);
@@ -134,8 +140,21 @@ button {
 .gray-social-links:focus {
   color: var(--accent-color);
 }
+.nav-link {
+  position: relative;
+}
 .social-links.current {
   color: var(--accent-color);
+}
+.current::after {  
+  content: '';
+  position: absolute;
+  bottom: -33px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--accent-color);
 }
 .envelope-box {
   display: flex;
@@ -161,7 +180,7 @@ vertical-align: middle;
 margin-right: 10px;
 fill: currentColor;
 }
-.contact-box {
+.contact-list {
   display: flex;
 }
 /* End top of the page */
@@ -245,6 +264,25 @@ fill: currentColor;
 .paragraphs-section {
   padding-bottom: 0;
 }
+.what-we-do-overlay {
+  position:relative;
+  overflow: hidden;
+}
+.what-we-do-overlay-boxes {
+position: absolute;
+width: 370px;
+height: 70px;
+left: 0;
+top: 224px;
+background-color: var(--background-gray-transparent);
+text-transform: uppercase;
+line-height: 1.2;
+font-weight: 700;
+color: var(--secondary-color);
+display: flex;
+align-items: center;
+justify-content: center;
+}
 /* End 'what we do' section */
 
 /* 'Our team' section */
@@ -293,6 +331,7 @@ fill: currentColor;
   justify-content: center;
   color: var(--inactive-icon-color);
   border-radius: 50%;
+  transition: color var(--transition-kit);
 }
 .team-social-link:hover, .team-social-link:focus {
   background-color: var(--accent-color);
@@ -302,9 +341,9 @@ fill: currentColor;
 /* End 'our team' section */
 
 /* "Our clients' section */
-
 .client-icon {
   fill: currentColor;
+  transition: fill var(--transition-kit);
 }
 .client-icon-link {
   width: 170px;
@@ -313,6 +352,7 @@ fill: currentColor;
   justify-content: center;
   align-items: center;
   color: var(--inactive-icon-color);
+  transition: color var(--transition-kit);
 }
 .client-item {
   border-radius: 4px;
@@ -343,6 +383,9 @@ fill: currentColor;
   line-height: 1.6;
   color: var(--main-text-color);
   justify-content: center;
+  transition: box-shadow var(--transition-kit), 
+  color var(--transition-kit), 
+  background-color var(--transition-kit);
 }
 .filters:hover,
 .filters:focus {
@@ -365,6 +408,9 @@ fill: currentColor;
   flex-wrap: wrap;
   gap: 30px;
 }
+.project-link{
+  transition: box-shadow var(--transition-kit);
+}
 .project-link:hover, 
 .project-link:focus {
   display: block;
@@ -376,10 +422,6 @@ fill: currentColor;
   border-top: 0;
   padding: 20px 24px;
 }
-/*.project-cards:hover, .project-cards:focus {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
-}*/
 .project-names {
   font-weight: 700;
   font-size: 18px;
@@ -393,6 +435,28 @@ fill: currentColor;
   line-height: 1.9;
   color: var(--light-gray);
 }
+.project-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: var(--accent-color-transparent);
+  transform: translateY(100%);
+  transition: var(--transition-kit);
+}
+.project-overlay > p {
+  color: var(--secondary-color);
+  font-size: 18px;
+  line-height: 1.6;
+  padding: 49px 45px 49px 24px;
+}
+.project-box-overlay:hover .project-overlay {
+  transform: translateY(0);
+}
+.project-box-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
 /* End projects section */
 
 /* Flex-settings */
@@ -428,6 +492,7 @@ address {
   font-style: normal;
   text-decoration: none;
   line-height: 1.7;
+  transition: color var(--transition-kit);
 }
 .map-link {
   color: var(--secondary-color);
@@ -461,6 +526,7 @@ address {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color var(--transition-kit);
 }
 .footer-button {
   fill: var(--secondary-color);
@@ -469,3 +535,46 @@ address {
   background-color: var(--accent-color);
 }
 /* End footer */
+
+/* Modal */
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--backdrop-color);
+  z-index: 1;
+}
+.modal-box {
+  position: relative;
+  width: 528px;
+  height: 581px;
+  border-radius: 4px;
+  background-color: var(--secondary-color);
+  transition: transform 0.2s;
+}
+.close-button {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  padding: 6px;
+  border: 1px solid var(--exit-button-broder);
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+.exit-modal {
+  display: block;
+}
+.modal-backdrop.is-hidden .modal-box {
+  transform: scale(0);
+}

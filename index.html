@@ -25,12 +25,12 @@
       <nav class="nav-list">
         <a href="index.html" class="webstudio"><span class="blue-studio">Web</span>Studio</a>
         <ul class="links-list">
-          <li><a href="#" class="social-links current">Agencja</a></li>
+          <li><a href="#" class="social-links current nav-link">Agencja</a></li>
           <li><a href="./portfolio.html" class="social-links">Portfolio</a></li>
           <li><a href="#" class="social-links">Kontakt</a></li>
         </ul>
         <div>
-          <ul class="contact-list contact-box">
+          <ul class="contact-list">
             <li class="envelope-box">
               <a href="mailto:info@devstudio.com" class="social-links contact-links"><svg width="16" height="12"
                   class="envelope-icon">
@@ -53,10 +53,10 @@
 
   <main>
     <!-- Header -->
-    <section class="first-section">
+    <section class="first-section first-container">
       <div class="container">
         <h1 class="primary-header">Efektywne rozwiązania dla waszego biznesu</h1>
-        <button type="button" class="service">Zamów usługę</button>
+        <button type="button" class="service" data-modal-open>Zamów usługę</button>
       </div>
       <!-- End header -->
     </section>
@@ -123,9 +123,24 @@
       <div class="container">
         <h2 class="secondary-headers">Czym się zajmujemy?</h2>
         <ul class="flex">
-          <li><img src="images/keyboard.jpg" alt="Keyboard" width="370" /></li>
-          <li><img src="images/phone.jpg" alt="Phone" width="370" /></li>
-          <li><img src="images/ipad.jpg" alt="iPad" width="370" /></li>
+          <li>
+            <div class="what-we-do-overlay">
+              <img src="images/keyboard.jpg" alt="Keyboard" width="370" />
+              <p class="what-we-do-overlay-boxes">Aplikacje komputerowe</p>
+            </div>
+          </li>
+          <li>
+            <div class="what-we-do-overlay">
+              <img src="images/phone.jpg" alt="Phone" width="370" />
+              <p class="what-we-do-overlay-boxes">Aplikacje mobilne</p>
+            </div>
+          </li>
+          <li>
+            <div class="what-we-do-overlay">
+              <img src="images/ipad.jpg" alt="iPad" width="370" />
+              <p class="what-we-do-overlay-boxes">Rozwiązania graficzne</p>
+            </div>
+          </li>
         </ul>
       </div>
     </section>
@@ -374,6 +389,19 @@
     </div>
     <!-- End footer -->
   </footer>
+  <!-- Modal -->
+  <div class="modal-backdrop is-hidden" data-modal>
+    <div class="modal-box">
+      <button type="button" class="close-button" data-modal-close>
+        <svg height="18" width="18" class="exit-modal">
+          <use href="./images/icons.svg#icon-exit-cross"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="./js/modal.js"></script>
+
 </body>
 
 </html>
