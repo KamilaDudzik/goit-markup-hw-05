@@ -416,7 +416,7 @@ justify-content: center;
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 .project-box {
-  border-bottom: 1px var(--card-border-color) solid;
+  border: 1px var(--card-border-color) solid;
   border-top: 0;
   padding: 20px 24px;
 }
@@ -447,9 +447,10 @@ justify-content: center;
   line-height: 1.6;
   padding: 49px 45px 49px 24px;
   transform: translateY(100%);
-  transition: var(--transition-kit);
+  transition: transform var(--transition-kit);
 }
-.project-box-overlay:hover .project-overlay {
+.project-link:hover .project-overlay, 
+.project-link:focus .project-overlay {
   transform: translateY(0);
 }
 
